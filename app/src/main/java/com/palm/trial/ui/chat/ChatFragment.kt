@@ -25,7 +25,7 @@ class ChatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView: RecyclerView = view.findViewById(R.id.chat_recycler_view)
 
-        viewModel.messages.observe(requireActivity()) { msgs ->
+        viewModel.messages.observe(viewLifecycleOwner) { msgs ->
             Log.d(TAG, "Messages observed, fragment = $this")
             recyclerView.adapter = MessagesAdapter(msgs)
         }
